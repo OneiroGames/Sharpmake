@@ -301,7 +301,7 @@ namespace Sharpmake
                 case Project.Configuration.OutputType.None:
                     return string.Empty;
                 default:
-                    return outputType.ToString().ToLower();
+                    return outputType.ToString();
             }
         }
 

@@ -33,7 +33,7 @@ namespace Sharpmake
 
         public string LowerName
         {
-            get { return _name.ToLower(); }
+            get { return _name; }
         }
 
         private bool _isTargetFileNameToLower = true;                                         // Makes the ProjectName ToLower or not
@@ -1545,7 +1545,7 @@ namespace Sharpmake
             {
                 for (int i = 0; i < allBlobsFiles.Count; ++i)
                 {
-                    string blobFileName = string.Format(@"{0}_{1:000}", Name.ToLower(), i);
+                    string blobFileName = string.Format(@"{0}_{1:000}", Name, i);
                     var blobbedFiles = (isBlobWorkEnabled) ?
                         from j in allBlobsFiles[i] where !j.IsWorkBlobCandidate select j.Path :
                         from j in allBlobsFiles[i] select j.Path;
@@ -1569,7 +1569,7 @@ namespace Sharpmake
 
                     for (int i = 0; i < workBlobFiles.Count; ++i)
                     {
-                        string blobFileName = string.Format(@"{0}_work_{1:000}", Name.ToLower(), i);
+                        string blobFileName = string.Format(@"{0}_work_{1:000}", Name, i);
                         blobFiles.Add(BlobGenerateFile(blobPath, workBlobFiles[i], blobFileName, configurations, WorkBlobFileHeader, WorkBlobFileFooter));
                     }
                 }
@@ -1973,7 +1973,7 @@ namespace Sharpmake
                     if (!file.EndsWith(BlobExtension, StringComparison.OrdinalIgnoreCase))
                         files.Add(file);
 
-                    string fileNameLC = file.ToLower();
+                    string fileNameLC = file;
                     s_capitalizedMapFiles.TryAdd(fileNameLC, file);
                 }
                 s_cachedDirectoryFiles[directoryCapitalizedFullName] = files;
@@ -1998,7 +1998,7 @@ namespace Sharpmake
 
         public static string GetCapitalizedFile(string file)
         {
-            string filenameLC = file.ToLower();
+            string filenameLC = file;
             string capitalizedFile;
             if (!s_capitalizedMapFiles.TryGetValue(filenameLC, out capitalizedFile))
             {
@@ -2623,7 +2623,7 @@ namespace Sharpmake
 
                 foreach (var assemblyPath in AdditionalEmbeddedAssemblies)
                 {
-                    string simplifiedPath = Util.SimplifyPath(assemblyPath).ToLower();
+                    string simplifiedPath = Util.SimplifyPath(assemblyPath);
                     _filteredEmbeddedAssemblies.Add(simplifiedPath);
                 }
             }

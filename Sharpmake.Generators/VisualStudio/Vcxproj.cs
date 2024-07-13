@@ -839,7 +839,6 @@ namespace Sharpmake.Generators.VisualStudio
             IPlatformVcxproj platformVcxproj = context.PresentPlatforms[context.Configuration.Platform];
 
             Strings ignoreSpecificLibraryNames = Options.GetStrings<Options.Vc.Linker.IgnoreSpecificLibraryNames>(context.Configuration);
-            ignoreSpecificLibraryNames.ToLower();
             ignoreSpecificLibraryNames.InsertSuffix(platformVcxproj.StaticLibraryFileFullExtension, true, new[] { platformVcxproj.SharedLibraryFileFullExtension });
 
             context.Options["AdditionalDependencies"] = FileGeneratorUtilities.RemoveLineTag;
@@ -1020,7 +1019,7 @@ namespace Sharpmake.Generators.VisualStudio
             // Write dotNet dependencies references
             {
                 // The behavior should be the same than for csproj...
-                string projectDependenciesCopyLocal = firstConf.Project.DependenciesCopyLocal.HasFlag(Project.DependenciesCopyLocalTypes.ProjectReferences).ToString().ToLower();
+                string projectDependenciesCopyLocal = firstConf.Project.DependenciesCopyLocal.HasFlag(Project.DependenciesCopyLocalTypes.ProjectReferences).ToString();
 
                 Options.ExplicitOptions options = new Options.ExplicitOptions();
                 options["CopyLocalSatelliteAssemblies"] = FileGeneratorUtilities.RemoveLineTag;

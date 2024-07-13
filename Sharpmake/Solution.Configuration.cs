@@ -250,8 +250,8 @@ namespace Sharpmake
                 Util.ResolvePath(Solution.SharpmakeCsPath, ref MasterBffDirectory);
                 if (Solution.IsFileNameToLower)
                 {
-                    SolutionFileName = SolutionFileName.ToLower();
-                    MasterBffFileName = MasterBffFileName.ToLower();
+                    SolutionFileName = SolutionFileName;
+                    MasterBffFileName = MasterBffFileName;
                 }
             }
         }

@@ -368,7 +368,7 @@ namespace Sharpmake.Generators.VisualStudio
                 {
                     string privateValue = RemoveLineTag;
                     if (Private.HasValue)
-                        privateValue = Private.ToString().ToLower();
+                        privateValue = Private.ToString();
 
                     string embedInteropTypesValue = RemoveLineTag;
                     if (EmbedInteropTypes.HasValue)
@@ -667,7 +667,7 @@ namespace Sharpmake.Generators.VisualStudio
                     using (resolver.NewScopedParameter("include", Include))
                     using (resolver.NewScopedParameter("projectGUID", Project.ToString("B")))
                     using (resolver.NewScopedParameter("projectRefName", Name))
-                    using (resolver.NewScopedParameter("private", Private.ToString().ToLower()))
+                    using (resolver.NewScopedParameter("private", Private.ToString()))
                     using (resolver.NewScopedParameter("ReferenceOutputAssembly", ReferenceOutputAssembly))
                     using (resolver.NewScopedParameter("IncludeOutputGroupsInVSIX", IncludeOutputGroupsInVSIX))
                     {
@@ -2733,7 +2733,7 @@ namespace Sharpmake.Generators.VisualStudio
                 LinkFolder = GetProjectLinkedFolder(templateFile, projectPath, project)
             });
 
-            var generatedFileExtension = Path.GetExtension(generatedFile).ToLower();
+            var generatedFileExtension = Path.GetExtension(generatedFile);
 
             //TODO Give some kind of additional TT directive to specify the build action directly?
             //For now everything is none but cs and xaml.

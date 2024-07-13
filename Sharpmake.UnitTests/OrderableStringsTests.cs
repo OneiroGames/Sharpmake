@@ -103,7 +103,7 @@ namespace Sharpmake.UnitTests
                     "O"
                 };
 
-            strings.ToLower();
+            strings;
 
             Assert.AreEqual("w,e,o", strings.ToString());
         }

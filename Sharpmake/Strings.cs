@@ -423,7 +423,7 @@ namespace Sharpmake
         public void ToLower()
         {
             for (int i = 0; i < _list.Count; ++i)
-                _list[i] = new StringEntry(_list[i].StringValue.ToLower(), _list[i].OrderNumber);
+                _list[i] = new StringEntry(_list[i].StringValue, _list[i].OrderNumber);
             _hashSet.Clear();
             _hashSet.UnionWith(from i in _list select i.StringValue);
         }

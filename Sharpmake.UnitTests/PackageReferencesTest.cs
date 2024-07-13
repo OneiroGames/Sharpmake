@@ -21,7 +21,7 @@ namespace Sharpmake.UnitTests
             {
                 var formatted = PackageReferences.PackageReference.GetFormatedAssetsDependency(dep);
                 Assert.AreEqual(1, formatted.Count());
-                Assert.AreEqual(formatted.First().ToLower(), dep.ToString().ToLower());
+                Assert.AreEqual(formatted.First(), dep.ToString().ToLower());
             }
         }
 

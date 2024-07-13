@@ -56,7 +56,7 @@ namespace Sharpmake
         public bool IsExtern()
         {
             if (_project != null)
-                return _project.SourceRootPath.ToLower().Contains("extern") || _project.SharpmakeCsFileName.ToLower().Contains("extern");
+                return _project.SourceRootPath.Contains("extern") || _project.SharpmakeCsFileName.Contains("extern");
 
             return _isExtern;
         }

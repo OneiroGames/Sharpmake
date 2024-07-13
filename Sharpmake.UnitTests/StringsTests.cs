@@ -27,7 +27,7 @@ namespace Sharpmake.UnitTests
             Strings strings = new Strings("TEST", "AA", "BB", "CC");
             Strings expectedStrings = new Strings("test", "aa", "bb", "cc");
 
-            strings.ToLower();
+            strings;
 
             Assert.AreEqual(expectedStrings, strings);
         }

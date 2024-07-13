@@ -39,7 +39,7 @@ namespace Sharpmake.Generators.Generic
                 FileNameProjectRelative = Util.PathGetRelative(projectPathCapitalized, FileName, true);
                 string fileNameSourceRelative = Util.PathGetRelative(projectSourceCapitalized, FileName, true);
 
-                FileExtensionLower = Path.GetExtension(FileName).ToLower();
+                FileExtensionLower = Path.GetExtension(FileName);
                 FileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileName);
 
                 int lastPathSeparator = fileNameSourceRelative.LastIndexOf(Path.DirectorySeparatorChar);

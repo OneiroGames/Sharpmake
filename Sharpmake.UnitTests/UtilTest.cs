@@ -62,7 +62,7 @@ namespace Sharpmake.UnitTests
         {
             string expectedResult = "$(Console_SdkPackagesRoot)";
             if (!Util.IsRunningInMono())
-                expectedResult = expectedResult.ToLower();
+                expectedResult = expectedResult;
             Assert.That(Util.PathMakeStandard("$(Console_SdkPackagesRoot)"), Is.EqualTo(expectedResult));
         }
 
@@ -76,7 +76,7 @@ namespace Sharpmake.UnitTests
 
             // Check case sensitivness on Unix 
             if (!Util.IsRunningOnUnix())
-                notFullyQualifiedUnixPath = notFullyQualifiedUnixPath.ToLower();
+                notFullyQualifiedUnixPath = notFullyQualifiedUnixPath;
 
             Assert.AreEqual(notFullyQualifiedUnixPath, Util.PathMakeStandard(notFullyQualifiedUnixPath));
         }
@@ -112,7 +112,7 @@ namespace Sharpmake.UnitTests
         {
             string expectedResult = Path.Combine("rd", "project", "dev", "projects", "sharpmake", "..", "..", "extern", "Geometrics");
             if (!Util.IsRunningInMono())
-                expectedResult = expectedResult.ToLower();
+                expectedResult = expectedResult;
             Assert.That(Util.PathMakeStandard(@"rd\project\dev\projects\sharpmake\..\..\extern\Geometrics\"), Is.EqualTo(expectedResult));
         }
 
@@ -121,7 +121,7 @@ namespace Sharpmake.UnitTests
         {
             var expectedResult = Path.Combine("rd", "project", "dev", "projects", "sharpmake", "..", "..", "extern", "Microsoft.CNG", "Lib");
             if (!Util.IsRunningInMono())
-                expectedResult = expectedResult.ToLower();
+                expectedResult = expectedResult;
             Assert.That(Util.PathMakeStandard(@"rd\project\dev\projects\sharpmake\..\..\extern\Microsoft.CNG\Lib\"), Is.EqualTo(expectedResult));
         }
 
@@ -130,7 +130,7 @@ namespace Sharpmake.UnitTests
         {
             var expectedResult = Path.Combine("rd", "project", "dev", "projects", "sharpmake", "..", "..", "extern", "Microsoft.CNG", "Lib");
             if (!Util.IsRunningInMono())
-                expectedResult = expectedResult.ToLower();
+                expectedResult = expectedResult;
             Assert.That(Util.PathMakeStandard(@"rd\project\dev\projects\sharpmake\..\..\extern\Microsoft.CNG\Lib\\\"), Is.EqualTo(expectedResult));
         }
 
@@ -614,7 +614,7 @@ namespace Sharpmake.UnitTests
             OrderableStrings pathsToLower = new OrderableStrings(paths);
             OrderableStrings pathsToUpper = new OrderableStrings(paths.Select((p) => p.ToUpper()));
 
-            pathsToLower.ToLower();
+            pathsToLower;
 
             Assert.AreEqual(paths, Util.PathGetCapitalized(pathsToLower));
             Assert.AreEqual(paths, Util.PathGetCapitalized(pathsToUpper));
@@ -1497,7 +1497,7 @@ namespace Sharpmake.UnitTests
             string filename = Path.GetFileName(mockPath);
             string stringsSource = Path.GetDirectoryName(mockPath);
 
-            Assert.AreEqual(Path.Combine(stringsSource.ToLower(), filename), Util.PathGetAbsolute(stringsSource, new Strings(filename))[0]);
+            Assert.AreEqual(Path.Combine(stringsSource, filename), Util.PathGetAbsolute(stringsSource, new Strings(filename))[0]);
 
             File.Delete(mockPath);
         }
@@ -1512,7 +1512,7 @@ namespace Sharpmake.UnitTests
             var separator = Path.DirectorySeparatorChar;
             string stringsSource = mockPath.Substring(0, mockPath.IndexOf(separator));
             string stringsDest = mockPath.Substring(mockPath.IndexOf(separator, mockPath.IndexOf(separator) + 1));
-            string expectedOutputPath = stringsSource.ToLower() + stringsDest;
+            string expectedOutputPath = stringsSource + stringsDest;
             //v
             Assert.AreEqual(expectedOutputPath, Util.PathGetAbsolute(stringsSource, stringsDest));
 
@@ -1529,7 +1529,7 @@ namespace Sharpmake.UnitTests
             Strings paths = new Strings(Path.GetDirectoryName(mockPath));
             string root = mockPath.Substring(0, mockPath.IndexOf(Path.DirectorySeparatorChar));
             Strings expectedOutputPath = new Strings(paths.Select((p) => Path.Combine(root, p)));
-            expectedOutputPath.ToLower();
+            expectedOutputPath;
 
             Util.ResolvePath(root, ref paths);
 
@@ -1635,13 +1635,13 @@ namespace Sharpmake.UnitTests
 
             var root = @"C:\SharpMake\sharpmake\Sharpmake.Application\Properties";
 
-            Assert.AreEqual(Path.Combine(absolutePath.ToLower(), fileName),
+            Assert.AreEqual(Path.Combine(absolutePath, fileName),
                 Util.GetConvertedRelativePath(absolutePath, fileName, newRelativeToFullPath: "", false, null));
 
             Assert.AreEqual(mockPath,
                 Util.GetConvertedRelativePath(absolutePath, mockPath, newRelativeToFullPath: "", false, root));
 
-            Assert.AreEqual(Path.Combine(absolutePath.ToLower(), fileName),
+            Assert.AreEqual(Path.Combine(absolutePath, fileName),
                 Util.GetConvertedRelativePath(absolutePath, fileName, newRelativeToFullPath: "", false, ""));
 
             Assert.AreEqual(absolutePath,

@@ -1837,7 +1837,6 @@ namespace Sharpmake.Generators.FastBuild
             libFiles.Sort();
 
             Strings ignoreSpecificLibraryNames = Options.GetStrings<Options.Vc.Linker.IgnoreSpecificLibraryNames>(context.Configuration);
-            ignoreSpecificLibraryNames.ToLower();
             ignoreSpecificLibraryNames.InsertSuffix(platformVcxproj.StaticLibraryFileFullExtension, true, new[] { platformVcxproj.SharedLibraryFileFullExtension });
             dependenciesInfo.IgnoredLibraryNames = ignoreSpecificLibraryNames;
 
@@ -1943,7 +1942,7 @@ namespace Sharpmake.Generators.FastBuild
                     // - With a filename without extension we must add the potential prefix and potential extension.
                     //      Ex:  On clang we add -l (supposedly because the exact file is named lib<library>.a)
                     // - With a filename with a static or shared lib extension (eg. .a/.lib/.so), we shouldn't touch it as it's already set by the script.
-                    string extension = Path.GetExtension(libraryFile).ToLower();
+                    string extension = Path.GetExtension(libraryFile);
                     string filenameOnly = Path.GetFileNameWithoutExtension(libraryFile);
                     string finalFilename = null;
                     if (string.IsNullOrEmpty(extension))

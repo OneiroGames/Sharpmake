@@ -121,7 +121,7 @@ namespace Sharpmake.Generators.VisualStudio
 
         public static string ReadGuidFromProjectFile(string projectFile)
         {
-            string key = Path.GetFullPath(projectFile).ToLower();
+            string key = Path.GetFullPath(projectFile);
             Lazy<string> guid = s_projectGUIDS.GetOrAdd(key, new Lazy<string>(() =>
             {
                 if (!File.Exists(key))
@@ -155,7 +155,7 @@ namespace Sharpmake.Generators.VisualStudio
         // ReadTypeGuidFromProjectFile is currently just looking at the file extension to associate a type.
         public static string ReadTypeGuidFromProjectFile(string projectFile)
         {
-            string filenameLC = Path.GetFullPath(projectFile).ToLower();
+            string filenameLC = Path.GetFullPath(projectFile);
             string guid;
             if (s_projectTypeGUIDS.TryGetValue(filenameLC, out guid))
                 return guid;

@@ -29,11 +29,6 @@ namespace Sharpmake
                 paths[i] = PathMakeStandard(paths[i]);
         }
 
-        public static string PathMakeStandard(string path)
-        {
-            return PathMakeStandard(path, !Util.IsRunningOnUnix());
-        }
-
         /// <summary>
         /// Cleanup the path by replacing the other separator by the correct one for the current OS
         /// then trim every trailing separators, except if <paramref name="path"/> is a root (i.e. 'C:\' or '/')
@@ -46,7 +41,7 @@ namespace Sharpmake
         /// <para>Note that Windows paths on Unix will have slashes (and vice versa)</para>
         /// <para>Note that network paths (like NAS) starting with "\\" are not supported</para>
         /// </remarks>
-        public static string PathMakeStandard(string path, bool forceToLower)
+        public static string PathMakeStandard(string path)
         {
             ArgumentNullException.ThrowIfNull(path, nameof(path));
 
@@ -78,7 +73,7 @@ namespace Sharpmake
                 standardPath = standardPath.TrimEnd(Path.DirectorySeparatorChar);
             }
 
-            return forceToLower ? standardPath.ToLower() : standardPath;
+            return standardPath;
         }
 
         public static string EnsureTrailingSeparator(string path)
@@ -657,7 +652,7 @@ namespace Sharpmake
 
         private static void GetProperDirectoryCapitalization(DirectoryInfo dirInfo, DirectoryInfo childInfo, ref StringBuilder pathBuilder)
         {
-            string lowerPath = dirInfo.FullName.ToLower();
+            string lowerPath = dirInfo.FullName;
             string capitalizedPath;
             if (s_capitalizedPaths.TryGetValue(lowerPath, out capitalizedPath))
             {
@@ -728,7 +723,7 @@ namespace Sharpmake
             // Don't touch paths starting with ..
             if (path.StartsWith("..", StringComparison.Ordinal))
                 return path;
-            string pathLC = path.ToLower();
+            string pathLC = path;
             string capitalizedPath;
             if (s_capitalizedPaths.TryGetValue(pathLC, out capitalizedPath))
             {
@@ -762,7 +757,7 @@ namespace Sharpmake
         {
             if (path.Length < 2 || path[1] != ':')
                 return path;
-            return path.Substring(0, 1).ToLower() + path.Substring(1);
+            return path.Substring(0, 1) + path.Substring(1);
         }
 
         public static string ConvertToUnixSeparators(string path)
@@ -789,9 +784,9 @@ namespace Sharpmake
         public static string ReplaceHeadPath(this string fullInputPath, string inputHeadPath, string replacementHeadPath)
         {
             // Normalize paths before comparing and combining them, to prevent false mismatch between '\\' and '/'.
-            fullInputPath = Util.PathMakeStandard(fullInputPath, false);
-            inputHeadPath = Util.PathMakeStandard(inputHeadPath, false);
-            replacementHeadPath = Util.PathMakeStandard(replacementHeadPath, false);
+            fullInputPath = Util.PathMakeStandard(fullInputPath);
+            inputHeadPath = Util.PathMakeStandard(inputHeadPath);
+            replacementHeadPath = Util.PathMakeStandard(replacementHeadPath);
 
             inputHeadPath = EnsureTrailingSeparator(inputHeadPath);
 

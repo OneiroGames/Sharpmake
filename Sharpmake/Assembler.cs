@@ -851,7 +851,7 @@ namespace Sharpmake
             // That is useful to be able to run several sharpmake concurrently with /sharpmakemutexsuffix otherwise they can cause harm to each others.
 
             // Note: Util.BuildGuid is converting the argument to a MD5.
-            string md5WorkingDir = Util.BuildGuid(Environment.CurrentDirectory).ToString().ToLower();
+            string md5WorkingDir = Util.BuildGuid(Environment.CurrentDirectory).ToString();
             return $"Sharpmake_Assembly_{md5WorkingDir}_";
         }
 
