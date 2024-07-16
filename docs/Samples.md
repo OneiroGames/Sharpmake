@@ -13,7 +13,7 @@ Here an example for the sample HelloWorld in `SamplesDef.json`:
     "OSs": [ "windows-2019", "windows-2022" ],
     "Frameworks": [ "net6.0" ],
     "Configurations": [ "debug", "release" ],
-    "TestFolder": "samples/HelloWorld",
+    "TestFolder": "Sharpmake.SamplesHelloWorld",
     "Commands":
     [
         "./RunSharpmake.ps1 -workingDirectory {testFolder} -sharpmakeFile \"HelloWorld.sharpmake.cs\" -framework {framework}",

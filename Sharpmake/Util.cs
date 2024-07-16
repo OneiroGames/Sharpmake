@@ -1809,7 +1809,7 @@ namespace Sharpmake
             }
         }
 
-        // http://www.mono-project.com/docs/faq/technical/#how-can-i-detect-if-am-running-in-mono
+        // http://www.mono-project.com/Docs/faq/technical/#how-can-i-detect-if-am-running-in-mono
         private static readonly bool s_monoRuntimeExists = (Type.GetType("Mono.Runtime") != null);
         public static bool IsRunningInMono() => s_monoRuntimeExists;
 

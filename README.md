@@ -1,4 +1,4 @@
-# <img src="/docs/sharpmake_logo.svg" width="32" height="32"> Sharpmake
+# <img src="/Docs/sharpmake_logo.svg" width="32" height="32"> Sharpmake
 
 ![build](https://github.com/ubisoft/Sharpmake/workflows/build/badge.svg)
 
@@ -39,7 +39,7 @@ Building and running Sharpmake is quite straightforward:
 
 Sharpmake originally had support for game consoles, but Ubisoft pulled it out because those could not be open sourced. Sharpmake now has an extension system that allows support for these consoles to be added back at runtime.
 
-More information about platforms can be found [here](docs/Platforms.md).
+More information about platforms can be found [here](Docs/Platforms.md).
 
 ## Extending Sharpmake
 

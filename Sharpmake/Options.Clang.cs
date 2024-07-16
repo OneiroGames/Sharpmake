@@ -11,7 +11,7 @@ namespace Sharpmake
         {
             /// <summary>
             /// Target format : <arch><sub>-<vendor>-<sys>-<abi>
-            /// https://clang.llvm.org/docs/CrossCompilation.html#target-triple
+            /// https://clang.llvm.org/Docs/CrossCompilation.html#target-triple
             /// </summary>
             /// <param name="arch"></param>
             /// <param name="sub"></param>

@@ -44,7 +44,7 @@ namespace Sharpmake
         public string FastBuildAllSolutionFolder = "FastBuild"; // set to null to add to the root
         public string FastBuildMasterBffSolutionFolder = "FastBuild"; // Warning: this one cannot be null, VS doesn't accept floating files at the root of the solution!
 
-        // Experimental! Create solution dependencies from the FastBuild projects outputting Exe to the FastBuildAll project, to fix "F5" behavior in visual studio http://www.fastbuild.org/docs/functions/vssolution.html
+        // Experimental! Create solution dependencies from the FastBuild projects outputting Exe to the FastBuildAll project, to fix "F5" behavior in visual studio http://www.fastbuild.org/Docs/functions/vssolution.html
         public bool FastBuildAllSlnDependencyFromExe = false;
 
         /// <summary>

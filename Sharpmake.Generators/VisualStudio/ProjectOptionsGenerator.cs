@@ -279,7 +279,7 @@ namespace Sharpmake.Generators.VisualStudio
                 context.Options["LanguageStandard"] = FileGeneratorUtilities.RemoveLineTag;
                 context.CommandLineOptions["LanguageStandard"] = FileGeneratorUtilities.RemoveLineTag;
 
-                //https://clang.llvm.org/docs/CommandGuide/clang.html
+                //https://clang.llvm.org/Docs/CommandGuide/clang.html
                 context.SelectOption
                 (
                 Options.Option(Options.Clang.Compiler.CppLanguageStandard.Default, () => { context.Options["ClangCppLanguageStandard"] = FileGeneratorUtilities.RemoveLineTag; context.Options["CppLanguageStandard"] = FileGeneratorUtilities.RemoveLineTag; }),

@@ -11,7 +11,7 @@
     <Authors>$(Company), Sharpmake contributors</Authors>
 
     <!-- Custom Variables -->
-    <!-- https://github.com/dotnet/sourcelink/blob/main/docs/README.md#continuousintegrationbuild -->
+    <!-- https://github.com/dotnet/sourcelink/blob/main/Docs/README.md#continuousintegrationbuild -->
     <ContinuousIntegrationBuild Condition="'$(GITLAB_CI)' == 'true' OR '$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 
     <!-- Compile Options -->
@@ -20,45 +20,45 @@
     <Deterministic>true</Deterministic>
     <Features>strict</Features>
     <TreatWarningsAsErrors Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
-    <EnforceCodeStyleInBuild Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">true</EnforceCodeStyleInBuild>
+<!--    <EnforceCodeStyleInBuild Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">true</EnforceCodeStyleInBuild>-->
     <NoWarn>1570,1591</NoWarn> <!-- For xml documentation warnings -->
     <DefineConstants>TRACE</DefineConstants>
     <DebugType>portable</DebugType>
     <InvariantGlobalization>true</InvariantGlobalization>
-
+    
     <!-- Package info -->
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
-  <!-- Automatic versionning based on Git repository -->
-  <ItemGroup>
-    <PackageReference Include="GitInfo" Version="3.3.5" PrivateAssets="all" />
-  </ItemGroup>
+<!--  &lt;!&ndash; Automatic versionning based on Git repository &ndash;&gt;-->
+<!--  <ItemGroup>-->
+<!--    <PackageReference Include="GitInfo" Version="3.3.5" PrivateAssets="all" />-->
+<!--  </ItemGroup>-->
 
-  <PropertyGroup>
-    <!-- Use GitInfo only to expose Git information as msbuild Properties, we then take care of defining Versions' properties -->
-    <GitVersion>false</GitVersion>
-    <GitThisAssembly>false</GitThisAssembly>
-    <!-- Uncomment GitInfoReportImportance to print all GitInfo information -->
-    <!--<GitInfoReportImportance>high</GitInfoReportImportance>-->
-  </PropertyGroup>
+<!--  <PropertyGroup>-->
+<!--    &lt;!&ndash; Use GitInfo only to expose Git information as msbuild Properties, we then take care of defining Versions' properties &ndash;&gt;-->
+<!--    <GitVersion>false</GitVersion>-->
+<!--    <GitThisAssembly>false</GitThisAssembly>-->
+<!--    &lt;!&ndash; Uncomment GitInfoReportImportance to print all GitInfo information &ndash;&gt;-->
+<!--    &lt;!&ndash;<GitInfoReportImportance>high</GitInfoReportImportance>&ndash;&gt;-->
+<!--  </PropertyGroup>-->
 
-  <Target Name="PopulateVersionInfo" DependsOnTargets="GitVersion" BeforeTargets="GetAssemblyVersion;GenerateNuspec;GetPackageContents">
-    <PropertyGroup>
-      <SharpmakeDefaultVersion>0.0.1-noversion</SharpmakeDefaultVersion>
-      <Version>$(GitTag)</Version> <!-- GitTag have additional information when we are not exactly on a tag, like 'git describe' --> 
-      <Version Condition="$(Version) == ''">$(SharpmakeDefaultVersion)</Version>
-      <PackageVersion>$(Version)</PackageVersion>
-      <RepositoryBranch Condition="$(GitRoot) != ''">$(GitBranch)</RepositoryBranch>
-      <RepositoryCommit Condition="$(GitRoot) != ''">$(GitSha)</RepositoryCommit>
-      <SourceRevisionId Condition="$(GitRoot) != ''">$(GitBaseTag).Commits.$(GitCommits).Branch.$(GitBranch).Sha.$(GitSha)</SourceRevisionId>
-    </PropertyGroup>
-    
-    <Message Condition="$(GitRoot) == ''" Importance="high" Text="Sharpmake Git repository can't be found" />
-    <Message Condition="$(GitRoot) == ''" Importance="high" Text="Sharpmake is expected to be built inside its Git repository to automatically deduce its version. Version will default to '$(SharpmakeDefaultVersion)'" />
-    
-    <Message Condition="$(GitTag) == '' and $(GitRoot) != ''" Importance="high" Text="No tag found in the Git repository, version will default to '$(SharpmakeDefaultVersion)'" />
-  </Target>
+<!--  <Target Name="PopulateVersionInfo" DependsOnTargets="GitVersion" BeforeTargets="GetAssemblyVersion;GenerateNuspec;GetPackageContents">-->
+<!--    <PropertyGroup>-->
+<!--      <SharpmakeDefaultVersion>0.0.1-noversion</SharpmakeDefaultVersion>-->
+<!--      <Version>$(GitTag)</Version> &lt;!&ndash; GitTag have additional information when we are not exactly on a tag, like 'git describe' &ndash;&gt; -->
+<!--      <Version Condition="$(Version) == ''">$(SharpmakeDefaultVersion)</Version>-->
+<!--      <PackageVersion>$(Version)</PackageVersion>-->
+<!--      <RepositoryBranch Condition="$(GitRoot) != ''">$(GitBranch)</RepositoryBranch>-->
+<!--      <RepositoryCommit Condition="$(GitRoot) != ''">$(GitSha)</RepositoryCommit>-->
+<!--      <SourceRevisionId Condition="$(GitRoot) != ''">$(GitBaseTag).Commits.$(GitCommits).Branch.$(GitBranch).Sha.$(GitSha)</SourceRevisionId>-->
+<!--    </PropertyGroup>-->
+<!--    -->
+<!--    <Message Condition="$(GitRoot) == ''" Importance="high" Text="Sharpmake Git repository can't be found" />-->
+<!--    <Message Condition="$(GitRoot) == ''" Importance="high" Text="Sharpmake is expected to be built inside its Git repository to automatically deduce its version. Version will default to '$(SharpmakeDefaultVersion)'" />-->
+<!--    -->
+<!--    <Message Condition="$(GitTag) == '' and $(GitRoot) != ''" Importance="high" Text="No tag found in the Git repository, version will default to '$(SharpmakeDefaultVersion)'" />-->
+<!--  </Target>-->
 
 </Project>

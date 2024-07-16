@@ -2933,8 +2933,11 @@ namespace Sharpmake
                 if (PostBuildStepTest != null)
                     PostBuildStepTest.Resolve(resolver);
 
-                string dependencyExtension = Util.GetProjectFileExtension(this);
-                ProjectFullFileNameWithExtension = ProjectFullFileName + dependencyExtension;
+                if (ProjectFullFileNameWithExtension == null)
+                {
+                    string dependencyExtension = Util.GetProjectFileExtension(this);
+                    ProjectFullFileNameWithExtension = ProjectFullFileName + dependencyExtension;
+                }
 
                 if (string.IsNullOrEmpty(ProjectGuid) && Project.SharpmakeProjectType != ProjectTypeAttribute.Compile)
                     ProjectGuid = Util.BuildGuid(ProjectFullFileNameWithExtension, Project.GuidReferencePath);

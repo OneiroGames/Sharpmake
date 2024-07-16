@@ -2332,7 +2332,7 @@ namespace Sharpmake
         public Strings AdditionalContentAlwaysCopy = new Strings();
         public Strings AdditionalContentCopyIfNewer = new Strings();
         public Strings AdditionalContentAlwaysIncludeInVsix = new Strings();
-        public int VSIXProjectVersion = -1; // -1 : Omit from csproj. Version 3 is needed for VS2017. See https://github.com/Microsoft/visualstudio-docs/blob/master/docs/extensibility/faq-2017.md#can-i-build-a-vsix-v3-with-visual-studio-2015
+        public int VSIXProjectVersion = -1; // -1 : Omit from csproj. Version 3 is needed for VS2017. See https://github.com/Microsoft/visualstudio-Docs/blob/master/Docs/extensibility/faq-2017.md#can-i-build-a-vsix-v3-with-visual-studio-2015
         public Strings AdditionalNoneAlwaysCopy = new Strings();
         public Strings AdditionalNoneCopyIfNewer = new Strings();
         public Strings AdditionalRuntimeTemplates = new Strings();

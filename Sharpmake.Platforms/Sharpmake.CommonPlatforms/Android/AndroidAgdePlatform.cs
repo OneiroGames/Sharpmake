@@ -774,7 +774,7 @@ namespace Sharpmake
                     string ndkVersionString = Util.GetNdkVersion(ndkPath);
                     // GNU Binutils remains available up to and including r22. All binutils tools with the exception of the assembler (GAS) were removed in r23. GAS was removed in r24.
                     // Above, we need to use LLVM utils, located <NDK>/toolchains/llvm/prebuilt/<host-tag>/bin/llvm-<tool>
-                    // cf. https://android.googlesource.com/platform/ndk/+/master/docs/BuildSystemMaintainers.md#binutils
+                    // cf. https://android.googlesource.com/platform/ndk/+/master/Docs/BuildSystemMaintainers.md#binutils
                     string librarian = Path.Combine("bin", "llvm-ar.exe");
                     if (int.TryParse(ndkVersionString, out int ndkVersion) && ndkVersion <= 22)
                         librarian = Path.Combine(Util.GetTargetTriple(androidBuildtarget), "bin", "ar.exe");

@@ -889,32 +889,7 @@ namespace Sharpmake
         /// <exception cref="ArgumentException"></exception>
         public static bool PathIsUnderRoot(string rootPath, string pathToTest)
         {
-            if (!Path.IsPathFullyQualified(rootPath))
-                throw new ArgumentException("rootPath needs to be absolute.", nameof(rootPath));
-
-            if (!Path.IsPathFullyQualified(pathToTest))
-                pathToTest = Path.GetFullPath(pathToTest, rootPath);
-
-            var intersection = GetPathIntersection(rootPath, pathToTest);
-
-            if (string.IsNullOrEmpty(intersection))
-                return false;
-
-            if (!Util.PathIsSame(intersection, rootPath))
-            {
-                if (rootPath.EndsWith(Path.DirectorySeparatorChar))
-                    return false;
-
-                // only way to make sure path point to file is to check on disk
-                // if file doesn't exist, treats this edge case as if path wasn't a file path
-                var fileInfo = new FileInfo(rootPath);
-                if (fileInfo.Exists && Util.PathIsSame(intersection, fileInfo.DirectoryName))
-                    return true;
-
-                return false;
-            }
-
-            return true;
+            return false;
         }
 
         /// <summary>

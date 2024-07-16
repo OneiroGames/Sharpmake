@@ -1,8 +1,8 @@
 # Samples and FunctionalTests generated files
-samples/**/*.csproj
-samples/**/*.sln
-samples/**/projects/*
-samples/**/codebase/temp/*
+Sharpmake.Samples**/*.csproj
+Sharpmake.Samples**/*.sln
+Sharpmake.Samples**/projects/*
+Sharpmake.Samples**/codebase/temp/*
 Sharpmake.Application/Properties/launchSettings.json
 Sharpmake.FunctionalTests/**/projects/*
 Sharpmake.FunctionalTests/**/blob/*
@@ -24,15 +24,8 @@ sharpmakeautocleanupdb*.bin
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
-# Build results
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
+Intermediate/
+Sharpmake.sln
 
 # Visual Studio 2015 cache/options directory
 .vs/

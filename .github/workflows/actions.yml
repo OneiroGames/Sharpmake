@@ -111,4 +111,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sharpmake-sample-msbuild-logs-${{ matrix.name }}-${{ matrix.framework }}-${{ runner.os }}-${{ github.sha }}-${{ matrix.configuration }}
-          path: samples/**/*.binlog
+          path: Sharpmake.Samples**/*.binlog
